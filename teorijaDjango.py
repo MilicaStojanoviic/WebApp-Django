@@ -82,3 +82,35 @@
 
 #uvek kad pokrenem projekat mora u cmdu cd django_projekat python manage.py runserver
 
+#paket u pyhtonu je skup modula(moduli su svi fajlovi sa .py ekstenzijom), paket mora da sadrzi i init.py da bi se taj folder tako identifikovao
+#poziv neke metode bi bio paket.modul.klasa.metoda
+#npr forms.Form je poziv Form klase iz paketa forms
+
+#svaki django projekat ima db.sqlite3, manage.py i u paketu: init.py, settings.py, urls.py, wsgi.py
+#db se kreira sa migrate komandom, manage alat za komandnu liniju koja sluzi za izvrsivanje django komandi
+#init kaze da je taj direktorijum python paket, wsgi je interfejs kojim omogucava komunikaciju izmedju web servera i aplikacije
+#on se koristi uglavnom za produkciju, ali posto mi ne objavljujemo koristimo runserver i to je dovoljno
+#settings su neka predefinisana podesavanja, npr za bazu, email...
+
+#u djangou sve funkcionise preko aplikacija, a sam projekat je kolekcija aplikacija i konf podesavanja
+#aplikacije ne samo da dodajes funkcionalnosti projektu, bez da ometas druge delove, vec su one i prenosne i mogu da se koriste u vise projekata
+#znaci to su funkcionalnosti specificne za 1 oblast sistema(npr korisnicki profil, blog, proizvodi u e prodavnici)
+#i tako se razliciti delovi projekta razdvajaju i odrzavaju nezavisno, tako da se mogu cak ti delovi lako preneti iz jednog projekta u drugi
+#ako se pravi prodavnica projekat moze da ima sledece aplikacije proizvnodi, narudzbine, korisnici(svaka ap ima svoje modele, viewove, template)
+
+#nova ap se kreira cd django_projekat  python manage.py startapp nazivapp
+#bitno je da app bude u istom direktorijumu kao i manage.py da ne bih imala greske
+
+#kada se app napravi mora da se instalira/registruje u settings.py tako sto je dodam u listu INSTALLED_APPS 'pages.apps.PagesConfig'
+
+#modifikacija views.py
+#modifikacija urls.py da bi se prikaziovao moj kod, ali da se ne bi to nalazilo na istom mestu, ugl se za svaku app pravi novi url fajl
+#menjam i urls u django pr
+#koristi path umesto url lakse je
+
+#nakon toga se kreiraju pages modeli
+#dodaje se kod u admin.py
+#kreiramo migraciju da se model doda u bazu python manage.py makemigrations pages, python manage.py migrate
+
+#posto django vec ima ugadjen interjes za admina, samo treba da se kreira admin user python manage.py createsuperuser (admin, admin@gmail.com, gnjilekruske)
+#http://127.0.0.1:8000/admin/, tu se dodaju stranice i kod u admin.py
