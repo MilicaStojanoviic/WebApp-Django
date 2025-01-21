@@ -82,6 +82,8 @@
 
 #uvek kad pokrenem projekat mora u cmdu cd django_projekat python manage.py runserver
 
+
+
 #paket u pyhtonu je skup modula(moduli su svi fajlovi sa .py ekstenzijom), paket mora da sadrzi i init.py da bi se taj folder tako identifikovao
 #poziv neke metode bi bio paket.modul.klasa.metoda
 #npr forms.Form je poziv Form klase iz paketa forms
@@ -114,3 +116,31 @@
 
 #posto django vec ima ugadjen interjes za admina, samo treba da se kreira admin user python manage.py createsuperuser (admin, admin@gmail.com, gnjilekruske)
 #http://127.0.0.1:8000/admin/, tu se dodaju stranice i kod u admin.py
+
+#u settings.py menjam deo kod templates, dirs je lista puteva do folders koji sadrze templates, app_dirs true, znaci da ce
+#django traziti folder pod imenom dirs u svakoj aplikaciji, a posto nisu svi templ vezani za app, dirs je koristan da se povezu ostali templ
+#posto smo u django_projektu naoravili templates, povezali smo ih u dirs
+#os.path.join samo pomaze da se kreira cela putanja do template direktorijuma
+#staticki fajlovi(slike, css i js) su u drugom direktorijumu u odnosu na app, tako django postize brzinu i skalabilnost
+#ovaj direktorijum se def u settings.py i zove se STATIC_URL, a mi dodajemo staticfiles_dirs 
+#ovo ima istu ulogu kao dirs za templates
+
+#nakon toga apdejtujem views u pages
+#{% block <name> %}{% endblock <name> %} u html-u omogucava da imam deo koji je promenljiv kad child nasledi ovaj template
+#zatim u pages app pravim templates koje ce naslediti ovaj iz django_projekat, ali dodajem tu jos jedan folder pages
+#jer ako imam da mi se 2 html-a zovu index, za razlicite app, onda ce django kad pretrazuje templ po app, uzeti orvu koju nadje, ovako zna koju treba
+#sada umesto glavnog templatea mogu da pozovem ovaj specifican u views
+
+#ponovo sam promanila urls, sada imam parametar koji je dinamicki deo urla, tako mogu da npr koristim meni i sad moram da menjam i view
+#kada u page.html stavim plejsholder content to i prikazuje ono sto je u bazi
+
+#sada popravljamo meni da funkcionise, u index u view dodajem i page_list, zatim u base dodajem {% block sidenav %} oko liste
+# zatim to overridujem u page.html
+
+#kad dodam ovo pg = get_object_or_404(Page, permalink=pagename) u view moram da menjam i settings DEBUG = False, ALLOWED_HOSTS = ['127.0.0.1']
+#posto 404 ne izgleda bas najbolje, u templates pravim i 404.html
+#ovo u settingsu menjam samo da vidim kako ce drugi videti ovu stranicu i pokrecem u cmdu preko python manage.py runserver --insecure
+#ovo mogu da uradim i za 500 server error i ostale, ali kad zavrsim vracam debbug na true, tako vidim gresku djanga koja je detaljna
+
+#kreiramo formu, ona je po sintaksi slicna modelu
+#moramo da dodamo url, zatim u base.html dodajemo formu u meni i na kraju dodajemo contact view i dodaj css

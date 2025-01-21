@@ -1,0 +1,24 @@
+{% extends "pages/page.html" %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block content %}
+<h1>Contact us</h1>
+<!-- ovo kaze ako je submitted(koji je bool) true vrati poruku, ako je false vrati praznu formu, post znaci da forma salje npodatke koji su uneseni
+ u telu http zahteva, sto omogucava bolju bezbednost od get metode koja ih salje kao parametre urla, a novalidate znaci da polja ne
+ validira sam chrome-->
+{% if submitted %}
+   <p class="success"> Your message was submitted successfully. Thank you. </p>
+{% else %}
+   <form action="" method="post" novalidate>
+      <table> 
+         {{ form.as_table }} <!-- ova linija renderuje polja forme u redove tabele, znaci django na osnovu forms.py sam pravi polja forme -->
+         <tr>
+             <td>&nbsp;</td> <!-- sluzi da razmak ostane isti ako se menja velicina prozora -->
+             <td><input type="submit" value="Submit"></td>
+         </tr>
+      </table>
+      {% csrf_token %} <!-- zastita podataka -->
+   </form>
+{% endif %}
+{% endblock content %}
