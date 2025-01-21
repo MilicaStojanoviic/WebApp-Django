@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig', #tako sam instalirala app
-    'quotes.apps.QuotesConfig'
+    'quotes.apps.QuotesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

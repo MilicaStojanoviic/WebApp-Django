@@ -142,5 +142,16 @@
 #ovo u settingsu menjam samo da vidim kako ce drugi videti ovu stranicu i pokrecem u cmdu preko python manage.py runserver --insecure
 #ovo mogu da uradim i za 500 server error i ostale, ali kad zavrsim vracam debbug na true, tako vidim gresku djanga koja je detaljna
 
-#kreiramo formu, ona je po sintaksi slicna modelu
+#kreiramo kontakt formu, ona je po sintaksi slicna modelu, ovde pokuplja podatke i salje ih na mejl
 #moramo da dodamo url, zatim u base.html dodajemo formu u meni i na kraju dodajemo contact view i dodaj css
+
+#cesca upotreba formi je za pokupljanje podataka i njihovo skladistenje u bazi, django ima posebnu klasu sa ovo model forms
+#tako moze da se kreira model, a onda i forma koja nasledjuje ovo
+#na ovom primeru se pravi potpuno nova app, jer je ovaj task za pokupljanje podataka dosta drugaciji od aplikacije koja prikazuje pod na stranici
+#python manage.py startapp quotes, request for quotation su zahtevi za ponudu
+#uploads folder ce sluziti da se cuvaju uploadovani fajlovi sa ponudama, i dodaj ponovo u installed apps
+#pravimo model i migriramo, zatim dodajemo ovaj model adminu, tako da on moze da upravlja ponudama, menjam admin.py
+#kreiramo forms.py, dodajemo view, pravimo template, i linkujemo sve to u urls u django_project(jer je nova app), a pravim u urls.py u appu
+#i za kraj dodajem u base.html u meniju
+
+
