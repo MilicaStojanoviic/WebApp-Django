@@ -84,7 +84,7 @@
 #python manage.py runserver 
 
 
-#uvek kad pokrenem projekat mora u cmdu cd django_projekat python manage.py runserver
+#uvek kad pokrenem projekat mora u cmdu cd django_projekat python manage.py runserver, ctrl+c da izadjem
 
 
 
