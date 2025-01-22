@@ -1,3 +1,7 @@
+#https://083950260099-attachments.s3.us-east-2.amazonaws.com/33211/bbb96849-df88-4cd4-849e-8daafcf58e04/MFDW1E2I-231118.pdf
+#http://127.0.0.1:8000/
+
+
 #Django implementira MVC dizajn patern, uopsteno model pruza interfejs prema bazi podataka koja sadrzi pod o aplikaciji
 #view prikuplja inf od korisnika i odlucuje koje info ce se prikazivati korisniku, a kontroler upravlja poslovnim logikom 
 #i sluzi kao posrednik za razmenu info izmedju ova dva
@@ -154,4 +158,30 @@
 #kreiramo forms.py, dodajemo view, pravimo template, i linkujemo sve to u urls u django_project(jer je nova app), a pravim u urls.py u appu
 #i za kraj dodajem u base.html u meniju
 
+#najprostije receno view je deo koda koji prima zahteve i vraca odgovore, svi viewovi koje smo mi do sada napravili bili su function based
+#ali u Djangu postoje class based, prednosti ovoga je sto get i post mogu da se naprave kao metode klase umesto uslovnih grananja
+#apstrakcija cestih paterna u genericke poglede, da bi view development bio laksi za ceste slucajeve i mi cemo se sada baviti ovim
+#znaci ovi genericki pogledi vec postoje i oni nasledjuju view class(templateview i redirectview), tempview vraca template i context
+#redirectview usmerava na dati url, cesto se koriste i detailview i listview
+#mi cemo u quotes koristiti listview
+#dodajem u views klasu, dodajem u urls, pravim template za ovo, i potrebno je da se zavrsava sa _list.html
 
+#zatim se dodaju detalji itema iz liste, isto menjam sve ko i do sad views, urls, pravim html, dodajem css
+
+#kreiranje usera, user grupe sluze tome da mogu da iste permissione da grupisem i samo dodelim 
+#dodajemo zabranu da neko vidi quotes ako nije registrovan user
+#u view stavljam da moraju da se loginuju pre nego sto vide i dodaju quote znaci odnosi se na quote_req, i quotelist
+#za ovo postoji built in funkcionalnost , ali cemo koristiti drugaciji pristup jer je jedna function based view a bruga class based 
+#za quote_req dodajemo decorator(to je spec fja koja modifikuje ponasanje druge fje i pocinje @ simbolom i mora da bude red iznad glavne fje)
+#posle toga menjam da se prikaze samo lista quotesa loginovanog usera i koristim mixin
+#mixin je specijalni tip klase, zatim dodajemo registration views
+#user creationform koja vec postoji nema svoj view zato pravimo jedan
+#dodajem sve u urls ali django_pr, isto tu pravim folder registration i dodajem potrebne html fajlove, menjam i base, da prikazuje pod o useru
+
+
+
+#deploying 
+#django kod moze da radi na svakom serveru koji podrzava wsgi(pythons web server gateway interface) i to preko wsgi.py
+#PythonAnywhere ima free pocetnicki nalog i zahteva neki setup
+#prvo se radi ciscenje, gde se brisu test baze tako da mogu da se rade nove migracije za mysql
+#i dalje se ponavljaju procesi sa pocetka samo u konzoli pythonanywherea, isprati knjigu ako ti treba
